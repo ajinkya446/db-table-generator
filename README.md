@@ -12,19 +12,13 @@ TODO: This package can generates files for the database tables for optimizing th
 TODO: Some Points need to follows while using this package in your project as belows.
 - Import package in your pubspec.yaml file as belows with path_provider and sqflite package.
 
-    sqflite:
-    path_provider:
-    db_generator:
-      path: .database/db_generator
+ ![image](https://user-images.githubusercontent.com/49361315/159474659-94ba3616-03f4-49a0-b71c-e30e8467ee57.png)
 
 - Create build.yaml file in your flutter project.
 - After creating build.yaml file then add the following code below in build.yaml file.
 
-    targets:
-      $default:
-        builders:
-          db_generator|databaseTableBuilder:
-            enabled: True
+![image](https://user-images.githubusercontent.com/49361315/159474712-3255280f-6c8b-43d6-9f0f-a0af8a2f52d1.png)
+
 
 - Then For creating tables dynamically run this command in terminal before running the project.
 - Then After Add Function for creating database in flutter and then pass this database object for
