@@ -1,39 +1,60 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+TODO: This db_generator package helps to generate database tables functionality in .g.dart files.
+It Usually contains the functionality like Create, Update, Delete, Select and drop tables etc.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+TODO: This package can generates files for the database tables for optimizing the code rewriting for
+ the every tables created by user.
+
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+TODO: Some Points need to follows while using this package in your project as belows.
+- Import package in your pubspec.yaml file as belows with path_provider and sqflite package.
 
-## Usage
+ ![image](https://user-images.githubusercontent.com/49361315/159474659-94ba3616-03f4-49a0-b71c-e30e8467ee57.png)
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+- Create build.yaml file in your flutter project.
+- After creating build.yaml file then add the following code below in build.yaml file.
 
-```dart
-const like = 'sample';
-```
+![image](https://user-images.githubusercontent.com/49361315/159474712-3255280f-6c8b-43d6-9f0f-a0af8a2f52d1.png)
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+- Then For creating tables dynamically run this command in terminal before running the project.
+- Then After Add Function for creating database in flutter and then pass this database object for
+calling the functions.
+
+      Future openLocalDatabase() async {
+        var path = await getApplicationDocumentsDirectory();
+        databasePath = join(path.path, dbName);
+        database = await openDatabase(databasePath, version: 1);
+        return database;
+      }
+
+
+## How To Use this package in your project
+
+TODO: Please Go through the example below.
+
+- Create below class/functionality in your project.
+
+          Future openLocalDatabase() async {
+            var path = await getApplicationDocumentsDirectory();
+            databasePath = join(path.path, dbName);
+            database = await openDatabase(databasePath, version: 1);
+            return database;
+          }
+
+- For using the generated tables function as follows
+
+         Future getDB() async {
+           db = await Helper().openLocalDatabase();
+           if (File(db.path).existsSync()) {
+             data = await ModelDBDAO.insertData(db, values);
+           } else {
+             ModelDBDAO.createTable(db);
+             demoDAO.createTable(db);
+             data = await ModelDBDAO.insertData(db, values);
+           }
+         }
+
