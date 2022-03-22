@@ -1,0 +1,10 @@
+builders:
+  databaseTableBuilder:
+    import: 'package:db_generator/db_generator.dart'
+    builder_factories: [ 'databaseTableBuilder' ]
+    auto_apply: dependents
+    build_extensions:
+      .dart:
+        - .dao.g.dart
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
